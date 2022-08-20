@@ -1,0 +1,84 @@
+
+Formulário.html
+===============
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Cadastro</title>
+
+    <script>
+        // Criando uma função em JavaScript
+        function mensagem() {
+            alert("Executando uma função em JavaScript");
+        }
+        function loop(){
+        const nome=["Pedro","Paulo","Ana","Flávia","Luciana","Nicole"];
+        var node = document.createElement("P");
+	    var textnode = document.createTextNode("Cadastro de alunos ");
+        
+        node.appendChild(textnode);
+
+        for (let contador=0; contador<nome.length; contador++){
+         
+            node.appendChild(document.createTextNode(contador + 1 + " - " + nome[contador] ));
+            document.getElementById("for").appendChild(node);
+
+        }
+        
+        }
+        //Criando uma função em JS, para validar os campos do formulário
+        function validar() {
+            let CampoNome = cadastro.nome.value;
+            if (CampoNome == "") {
+                alert("Por favor preencha o campo nome pois ele é obrigatório");
+                cadastro.nome.focus();
+                return false;
+            } else {
+                let senha = cadastro.senha.value;
+                if(senha == "" || senha.length < 5){
+                    alert("Senha deverá ter mais de 5 caracteres!");
+                    cadastro.senha.focus();
+                    return false;
+                }else{
+                    if(cadastro.senharepetida.value != senha){
+                        alert("A senha principal não está de acordo com a senha de confirmação!");
+                    return false;
+                    }else{
+                alert("Olá " + CampoNome + " sejam bem vindo");
+            }}}
+
+            
+        }
+    </script>
+
+</head>
+
+<body>
+    <!--
+        <form>
+            <input type="button" onclick="mensagem()" value="Click">
+        </form>-->
+
+    <form name="cadastro" method="get">
+        <label>Nome:</label>
+        <input type="text" name="nome"><br><br>
+        <label>Senha:</label>
+        <input type="password" name="senha">
+        <label>Repita senha Senha:</label>
+        <input type="password" name="senharepetida">
+        <input type="submit" onclick="return validar()" value="Enviar">
+        <br>
+
+    </form>
+    <button onclick="loop();">Testar for
+        </button>
+        <div id="for"></div>
+
+
+</body>
+
+</html>
